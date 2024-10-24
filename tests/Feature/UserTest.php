@@ -1,13 +1,16 @@
 <?php
 
 use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
+uses(RefreshDatabase::class);
 
 it('checks if users can be created', function () {
     $user = User::factory()->create([
         'first_name' => 'John',
         'last_name' => 'Doe',
         'email' => 'johndoe@example.com',
-        'timezone' => 'CET'
+        'timezone' => 'CET',
     ]);
 
     expect($user)->toBeInstanceOf(User::class)
